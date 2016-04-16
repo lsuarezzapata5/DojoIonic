@@ -1,18 +1,19 @@
 angular.module('app.routes',[])
-	.config(function($stateProvider,$urlRouteProvider){
+	.config(function($stateProvider,$urlRouterProvider){
 		$stateProvider
 		.state('menu',{
 			url:'/menu',
-			templateUrl:'templates/menu.mtl'
+			abstract: true,
+			templateUrl:'templates/menu.html'
 		})
 		.state('menu.page',{
 			url:'/index',
-			view:{
+			views:{
 				'side-menu':{
 					templateUrl: 'templates/page.html',
 					controller: 'pageCtrl'
 				}
 			}
-		})
-	$urlRouteProvider.otherwise('#/menu]/index');
+		});
+	$urlRouterProvider.otherwise('/menu/index');
 });
